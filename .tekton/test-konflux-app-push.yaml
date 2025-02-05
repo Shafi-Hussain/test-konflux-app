@@ -26,6 +26,7 @@ spec:
   - name: build-platforms
     value:
     - linux/x86_64
+    - linux/ppc64le
   - name: dockerfile
     value: Dockerfile
   pipelineSpec:
@@ -532,6 +533,9 @@ spec:
       params:
       - name: IMAGE
         value: $(tasks.build-image-index.results.IMAGE_URL)
+      - name: ADDITIONAL_TAGS
+        value:
+        - "v1.2.3"
       runAfter:
       - build-image-index
       taskRef:
