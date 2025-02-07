@@ -22,7 +22,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/shafirh-tenant/test-konflux-app:{{revision}}
+    value: quay.io/redhat-user-workloads/shafirh-tenant/test-konflux-app:{{target_branch}}
   - name: build-platforms
     value:
     - linux/x86_64
@@ -535,7 +535,7 @@ spec:
         value: $(tasks.build-image-index.results.IMAGE_URL)
       - name: ADDITIONAL_TAGS
         value:
-        - "v1.2.3"
+        - '{{target_branch}}-{{revision}}'
       runAfter:
       - build-image-index
       taskRef:
